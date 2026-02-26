@@ -136,9 +136,17 @@ exports.getUserData = async (req, res) => {
 };
 
 // ================= LOGOUT =================
+// backend/controllers/authController.js
 exports.logout = (req, res) => {
-  res.clearCookie("token").status(200).json({
-    success: true,
-    message: "Logged out successfully",
-  });
+  res
+    .clearCookie("token", {
+      httpOnly: true,
+      secure: false, // always false, local aur prod dono me delete ho jaye
+      sameSite: "Lax", // safe default, cross-site nahi chahiye
+    })
+    .status(200)
+    .json({
+      success: true,
+      message: "Logged out successfully",
+    });
 };
