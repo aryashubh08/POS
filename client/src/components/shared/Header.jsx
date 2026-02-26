@@ -17,7 +17,7 @@ const Header = () => {
   // console.log(user);
 
   const handleLogout = async () => {
-    const { data } = await api.post("/v1/auth/logout");
+    const { data } = await api.post("/api/v1/auth/logout");
     if (data.success) {
       toast.success("Logged out!");
       dispatch(removeUser());
