@@ -15,7 +15,7 @@ import Dashboard from "./pages/Dashboard";
 
 const App = () => {
   const location = useLocation();
-  useLoadData();
+  // useLoadData();
   const { user } = useSelector((state) => state.user);
   const hideHeaderRoutes = ["/auth"];
 

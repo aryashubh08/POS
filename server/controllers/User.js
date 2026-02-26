@@ -141,8 +141,8 @@ exports.logout = (req, res) => {
   res
     .clearCookie("token", {
       httpOnly: true,
-      secure: false, // always false, local aur prod dono me delete ho jaye
-      sameSite: "Lax", // safe default, cross-site nahi chahiye
+      secure: false,
+      sameSite: "Lax",
     })
     .status(200)
     .json({
