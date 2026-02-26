@@ -17,7 +17,7 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(
   cors({
-    origin: "https://pos-seven-pi.vercel.app/auth",
+    origin: "https://pos-seven-pi.vercel.app/",
     credentials: true,
   }),
 );

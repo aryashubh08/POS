@@ -47,7 +47,7 @@ const BillInfo = () => {
       // ================= CASH PAYMENT =================
       if (paymentMethod === "Cash") {
         const orderRes = await axios.post(
-          "http://localhost:5000/api/v1/order/create",
+          "https://pos-jbid.vercel.app/api/v1/order/create",
           {
             customerDetails: {
               name: customerData.customerName,
@@ -70,7 +70,7 @@ const BillInfo = () => {
         const createdOrder = orderRes.data.order || orderRes.data;
 
         await axios.post(
-          `http://localhost:5000/api/v1/table/update/${table.tableId}`,
+          `https://pos-jbid.vercel.app/api/v1/table/update/${table.tableId}`,
           {
             status: "Booked",
             orderId: createdOrder._id,
@@ -103,7 +103,7 @@ const BillInfo = () => {
         }
 
         const { data } = await axios.post(
-          "http://localhost:5000/api/v1/payment/create-order",
+          "https://pos-jbid.vercel.app/api/v1/payment/create-order",
           { amount: totalPriceWithTax },
           { withCredentials: true },
         );
@@ -117,13 +117,13 @@ const BillInfo = () => {
           handler: async function (response) {
             try {
               await axios.post(
-                "http://localhost:5000/api/v1/payment/verify-payment",
+                "https://pos-jbid.vercel.app/api/v1/payment/verify-payment",
                 response,
                 { withCredentials: true },
               );
 
               const orderRes = await axios.post(
-                "http://localhost:5000/api/v1/order/create",
+                "https://pos-jbid.vercel.app/api/v1/order/create",
                 {
                   customerDetails: {
                     name: customerData.customerName,
@@ -150,7 +150,7 @@ const BillInfo = () => {
               const createdOrder = orderRes.data.order || orderRes.data;
 
               await axios.post(
-                `http://localhost:5000/api/v1/table/update/${table.tableId}`,
+                `https://pos-jbid.vercel.app/v1/table/update/${table.tableId}`,
                 {
                   status: "Booked",
                   orderId: createdOrder._id,

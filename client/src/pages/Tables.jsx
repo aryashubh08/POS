@@ -14,7 +14,7 @@ const Tables = () => {
   const makeAvailable = async (id) => {
     try {
       const { data } = await axios.post(
-        `http://localhost:5000/api/v1/table/update/${id}`,
+        `https://pos-jbid.vercel.app/api/v1/table/update/${id}`,
         {
           status: "Available",
           orderId: null, // order remove

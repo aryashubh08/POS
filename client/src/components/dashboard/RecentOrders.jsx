@@ -28,7 +28,7 @@ const RecentOrders = () => {
   // 🔹 Update Order Status
   const handleStatusChange = async (id, newStatus) => {
     try {
-      await axios.put(`http://localhost:5000/api/v1/order/${id}`, {
+      await axios.put(`https://pos-jbid.vercel.app/api/v1/order/${id}`, {
         orderStatus: newStatus,
       });
 
