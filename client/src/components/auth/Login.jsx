@@ -23,7 +23,7 @@ const Login = () => {
     try {
       setLoading(true);
 
-      const { data } = await api.post("/v1/auth/login", formData);
+      const { data } = await api.post("/api/v1/auth/login", formData);
 
       if (data.success) {
         toast.success("Login successful!");

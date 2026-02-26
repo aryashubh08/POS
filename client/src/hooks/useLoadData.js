@@ -12,7 +12,7 @@ const useLoadData = () => {
   useEffect(() => {
     const fetchUser = async () => {
       try {
-        const { data } = await api.get("/v1/auth/getUserData", {
+        const { data } = await api.get("/api/v1/auth/getUserData", {
           withCredentials: true,
         });
         dispatch(setUser(data.user));

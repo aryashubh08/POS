@@ -150,7 +150,7 @@ const BillInfo = () => {
               const createdOrder = orderRes.data.order || orderRes.data;
 
               await axios.post(
-                `https://pos-jbid.vercel.app/v1/table/update/${table.tableId}`,
+                `https://pos-jbid.vercel.app/api/v1/table/update/${table.tableId}`,
                 {
                   status: "Booked",
                   orderId: createdOrder._id,

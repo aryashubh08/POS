@@ -47,7 +47,7 @@ const Tables = () => {
     try {
       setLoading(true);
 
-      const { data } = await api.get("/v1/table/getTable");
+      const { data } = await api.get("/api/v1/table/getTable");
 
       if (data?.success) {
         setTables(data.tables);

@@ -34,7 +34,7 @@ const Register = ({ setIsRegister }) => {
 
       setLoading(true);
 
-      const { data } = await api.post("/v1/auth/signup", formData);
+      const { data } = await api.post("/api/v1/auth/signup", formData);
 
       if (data.success) {
         toast.success("Registration successful!");
