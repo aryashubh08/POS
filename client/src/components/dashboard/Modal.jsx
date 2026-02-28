@@ -26,7 +26,7 @@ const Modal = ({ setIsTableModalOpen }) => {
         seats: Number(tableData.seats),
       };
 
-      const { data } = await api.post("/v1/table/create", payload);
+      const { data } = await api.post("/api/v1/table/create", payload);
 
       if (data?.success) {
         console.log(data);
