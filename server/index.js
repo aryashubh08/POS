@@ -9,6 +9,8 @@ const userRoute = require("./routes/userRoute");
 const orderRoute = require("./routes/orderRoute");
 const tableRoute = require("./routes/tableRoute");
 const paymentRoute = require("./routes/paymentRoute");
+const categoryRoute = require("./routes/categoryRoute");
+const itemsRoute = require("./routes/itemsRoute");
 const db = require("./config/database");
 
 db.connect();
@@ -26,6 +28,8 @@ app.use("/api/v1/auth", userRoute);
 app.use("/api/v1/order", orderRoute);
 app.use("/api/v1/table", tableRoute);
 app.use("/api/v1/payment", paymentRoute);
+app.use("/api/v1/category", categoryRoute);
+app.use("/api/v1/items", itemsRoute);
 app.get("/", (req, res) => {
   res.send("Server running");
 });
