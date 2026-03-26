@@ -14,7 +14,6 @@ const Header = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [open, setOpen] = useState(false);
-  // console.log(user);
 
   const handleLogout = async () => {
     const { data } = await api.post("/api/v1/auth/logout");
@@ -26,15 +25,17 @@ const Header = () => {
   };
 
   return (
-    <div className="flex justify-between items-center py-2 px-8 shadow-sm bg-white">
+    <div className="flex justify-between items-center py-2 px-4 sm:px-8 shadow-sm bg-white">
       {/* logo */}
       <Link to="/" className="flex items-center gap-2">
-        <img src="/logo.webp" alt="" className="w-12 h-12" />
-        <h1 className="text-lg font-semibold text-slate-700">Restro</h1>
+        <img src="/logo.webp" alt="" className="w-10 h-10 sm:w-12 sm:h-12" />
+        <h1 className="text-base sm:text-lg font-semibold text-slate-700">
+          Restro
+        </h1>
       </Link>
 
-      {/* search */}
-      <div className="flex items-center gap-3 border rounded-lg px-4 py-2 w-[320px]">
+      {/* search (HIDDEN on small screens) */}
+      <div className="hidden md:flex items-center gap-3 border rounded-lg px-4 py-2 w-[320px]">
         <IoIosSearch className="text-[#CB131E] text-xl" />
         <input
           type="text"
@@ -44,10 +45,13 @@ const Header = () => {
       </div>
 
       {/* right */}
-      <div className="flex items-center gap-4 relative">
+      <div className="flex items-center gap-2 sm:gap-4 relative">
+        {/* bell */}
         <button className="bg-[#cb131e] text-white p-2 rounded-md">
           <FaRegBell />
         </button>
+
+        {/* dashboard (admin only) */}
         {user?.role === "Admin" && (
           <button
             onClick={() => navigate("/dashboard")}
@@ -65,7 +69,9 @@ const Header = () => {
           <div className="bg-[#161E54] text-white p-2 rounded-full">
             <FaRegUserCircle />
           </div>
-          <div className="hidden md:block">
+
+          {/* hide text on small screens */}
+          <div className="hidden sm:block">
             <h1 className="text-sm font-semibold">{user?.name}</h1>
             <p className="text-xs text-slate-500">{user?.role}</p>
           </div>
@@ -73,7 +79,7 @@ const Header = () => {
 
         {/* dropdown */}
         {open && (
-          <div className="absolute z-50 right-0 top-14 overflow-hidden w-44 bg-white shadow-lg rounded-lg border">
+          <div className="absolute z-50 right-0 top-12 sm:top-14 overflow-hidden w-40 sm:w-44 bg-white shadow-lg rounded-lg border">
             <button
               onClick={handleLogout}
               className="flex items-center gap-2 w-full px-4 py-2 text-red-500 hover:bg-red-50"

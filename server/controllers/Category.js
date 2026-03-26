@@ -56,7 +56,7 @@ exports.getCategory = async (req, res) => {
   try {
     // const { categoryId } = req.params;
 
-    const category = await Category.find();
+    const category = await Category.find().populate("items");
 
     res.status(200).json({
       success: true,

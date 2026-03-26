@@ -33,20 +33,23 @@ const Greetings = () => {
   };
 
   return (
-    <div className="flex justify-between items-center px-8 mt-2">
+    <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center px-4 sm:px-8 mt-2 gap-3 sm:gap-0">
+      {/* Left Section */}
       <div>
-        <h1 className="text-slate-600 text-xl font-semibold tracking-wide">
+        <h1 className="text-slate-600 text-lg sm:text-xl font-semibold tracking-wide">
           Good Morning, {user?.name}
         </h1>
-        <p className="text-slate-500 text-sm">
+        <p className="text-slate-500 text-xs sm:text-sm">
           Give your best services for customers 😁
         </p>
       </div>
-      <div>
-        <h1 className="text-slate-600 font-bold text-lg">
+
+      {/* Right Section */}
+      <div className="text-left sm:text-right">
+        <h1 className="text-slate-600 font-bold text-base sm:text-lg">
           {formatTime(dateTime)}
         </h1>
-        <p className="text-slate-500 text-sm font-semibold">
+        <p className="text-slate-500 text-xs sm:text-sm font-semibold">
           {formatDate(dateTime)}
         </p>
       </div>

@@ -41,7 +41,7 @@ const RecentOrders = () => {
   });
 
   return (
-    <div className="p-8">
+    <div className="">
       <div className="w-full h-[280px] bg-white rounded-lg px-6 shadow-md border border-slate-100">
         {/* Header */}
         <div className="flex justify-between items-center py-3 border-b">

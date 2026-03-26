@@ -14,6 +14,7 @@ const buttons = [
 ];
 
 const tabs = ["Metrics", "Orders", "Payment"];
+
 const Dashboard = () => {
   const [active, setActive] = useState("Metrics");
   const [isTableModalOpen, setIsTableModalOpen] = useState(false);
@@ -27,34 +28,47 @@ const Dashboard = () => {
   };
 
   return (
-    <div className="bg-slate-50 h-[calc(100vh-5rem)]">
-      <div className="container mx-auto flex items-center justify-between py-6 px-6 md:px-4">
-        <div className="flex items-center gap-3">
+    <div className="bg-slate-50 min-h-[calc(100vh-5rem)] px-4 sm:px-6">
+      {/* HEADER */}
+      <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-3 py-4">
+        {/* ACTION BUTTONS */}
+        <div className="flex gap-2 overflow-x-auto no-scrollbar">
           {buttons.map(({ label, icon, action }) => (
             <button
               key={label}
               onClick={() => handleOpenModal(action)}
-              className="bg-[#1a1a1a] hover:bg-[#262626] px-6 py-2 rounded-lg text-slate-300 font-semibold text-sm flex items-center gap-2"
+              className="whitespace-nowrap bg-[#1a1a1a] hover:bg-[#262626] px-4 sm:px-6 py-2 rounded-lg text-slate-300 font-semibold text-xs sm:text-sm flex items-center gap-2"
             >
               {label} {icon}
             </button>
           ))}
         </div>
-        <div className="flex items-center gap-3">
+
+        {/* TABS */}
+        <div className="flex gap-2 overflow-x-auto no-scrollbar">
           {tabs.map((tab) => (
             <button
               key={tab}
               onClick={() => setActive(tab)}
-              className={` px-6 py-2 rounded-lg  font-semibold duration-200 text-sm flex items-center gap-2 ${active === tab ? "bg-yellow-400 text-black" : " bg-[#1a1a1a] text-white"}
-        `}
+              className={`whitespace-nowrap px-4 sm:px-6 py-2 rounded-lg font-semibold duration-200 text-xs sm:text-sm ${
+                active === tab
+                  ? "bg-yellow-400 text-black"
+                  : "bg-[#1a1a1a] text-white"
+              }`}
             >
               {tab}
             </button>
           ))}
         </div>
       </div>
-      {active === "Metrics" && <Metrics />}
-      {active === "Orders" && <RecentOrders />}
+
+      {/* CONTENT */}
+      <div className="mt-2">
+        {active === "Metrics" && <Metrics />}
+        {active === "Orders" && <RecentOrders />}
+      </div>
+
+      {/* MODALS */}
       {isTableModalOpen && <Modal setIsTableModalOpen={setIsTableModalOpen} />}
       {isCategoryModelOpen && (
         <CategoryModel setIsCategoryModelOpen={setIsCategoryModelOpen} />

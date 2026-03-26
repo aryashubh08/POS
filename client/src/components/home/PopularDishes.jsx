@@ -3,7 +3,7 @@ import { popularDishes } from "../../constants";
 
 const PopularDishes = () => {
   return (
-    <div className="mt-6 pr-6 pb-2">
+    <div className="mt-6  pb-2">
       <div className="bg-white/70 backdrop-blur-xl  border border-slate-200 rounded-lg shadow-lg">
         {/* Header */}
         <div className="flex justify-between items-center px-5 py-4">

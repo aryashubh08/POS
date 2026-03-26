@@ -1,9 +1,7 @@
 import React, { useState } from "react";
 import BottomNav from "../components/shared/BottomNav";
 import BackButton from "../components/shared/BackButton";
-
 import MenuContainer from "../components/menu/MenuContainer";
-
 import CustomerInfo from "../components/menu/CustomerInfo";
 import CartInfo from "../components/menu/CartInfo";
 import BillInfo from "../components/menu/BillInfo";
@@ -11,13 +9,12 @@ import { useSelector } from "react-redux";
 
 const Menu = () => {
   const { customerName, table } = useSelector((state) => state.customer);
-  console.log(table);
-  const [active, setActive] = useState("All");
 
   return (
-    <div className="bg-slate-50 min-h-[calc(100vh-8rem)] overflow-hidden flex mb-8 px-6 gap-2">
-      {/* left div */}
-      <div className=" flex-[3] ">
+    <div className="bg-slate-50 min-h-[calc(100vh-8rem)] flex flex-col lg:flex-row mb-8 px-3 lg:px-6 gap-3">
+      {/* LEFT SECTION */}
+      <div className="w-full lg:flex-[3]">
+        {/* HEADER */}
         <div className="flex justify-between items-center">
           <div className="flex items-center gap-4">
             <BackButton />
@@ -25,31 +22,30 @@ const Menu = () => {
           </div>
 
           <div className="flex items-center gap-3 cursor-pointer">
-            <div className="  text-white font-bold text-xl rounded-md p-1 cursor-pointer">
-              <img src="/logo.webp" alt="" className="w-10 h-10" />
-            </div>
-            <div className="flex flex-col items-start">
-              <h1 className="text-md">{customerName || "Customer Name"}</h1>
+            <img src="/logo.webp" alt="" className="w-8 h-8 lg:w-10 lg:h-10" />
+            <div className="flex flex-col">
+              <h1 className="text-sm lg:text-md">
+                {customerName || "Customer Name"}
+              </h1>
               <p className="text-xs font-semibold">
-                Table No:{table?.tableNo || "N/A"}
+                Table No: {table?.tableNo || "N/A"}
               </p>
             </div>
           </div>
         </div>
+
         <MenuContainer />
       </div>
-      {/* right div */}
-      <div className="flex-[1] shadow-lg bg-white pt-2 pb-3 mb-8  mt-2">
-        {/* customer info */}
-        <CustomerInfo />
-        <hr className="border-slate-200 my-1" />
 
-        {/* cart items */}
+      {/* RIGHT SECTION */}
+      <div className="w-full lg:flex-[1] bg-white shadow-lg rounded-lg pb-10 p-2 mt-2 lg:mt-0 max-h-[80vh] overflow-y-auto">
+        <CustomerInfo />
+        <hr className="my-2" />
         <CartInfo />
-        <hr className="border-slate-200 my-1" />
-        {/* Bills */}
+        <hr className="my-2" />
         <BillInfo />
       </div>
+
       <BottomNav />
     </div>
   );

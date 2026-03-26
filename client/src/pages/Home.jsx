@@ -6,17 +6,15 @@ import { BsCashCoin } from "react-icons/bs";
 import { GrInProgress } from "react-icons/gr";
 import RecentOrders from "../components/home/RecentOrders";
 import PopularDishes from "../components/home/PopularDishes";
-import { useSelector } from "react-redux";
 
 const Home = () => {
-  // const { orders } = useSelector((state) => state.orders);
-  // console.log(orders);
   return (
-    <div className="bg-slate-50 h-[calc(100vh-5.5rem)]  flex gap-2 overflow-hidden">
-      {/* left div */}
-      <div className=" flex-[3]">
+    <div className="bg-slate-50 min-h-[calc(100vh-5.5rem)] flex flex-col lg:flex-row gap-4 overflow-hidden px-4 sm:px-8 pb-10">
+      {/* LEFT SECTION */}
+      <div className="flex-[3]">
         <Greetings />
-        <div className="flex items-center w-full gap-3 px-8 mt-3">
+
+        <div className="flex flex-col sm:flex-row w-full gap-3 mt-3">
           <MiniCard
             title="Total Earnings"
             icon={<BsCashCoin />}
@@ -30,12 +28,20 @@ const Home = () => {
             footerNum={3.6}
           />
         </div>
+
         <RecentOrders />
+
+        {/* MOBILE ONLY */}
+        <div className="block lg:hidden mt-3">
+          <PopularDishes />
+        </div>
       </div>
-      {/* right div */}
-      <div className="flex-[2] ">
+
+      {/* RIGHT SECTION (DESKTOP ONLY) */}
+      <div className="hidden lg:block flex-[2]">
         <PopularDishes />
       </div>
+
       <BottomNav />
     </div>
   );

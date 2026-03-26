@@ -19,7 +19,11 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(
   cors({
-    origin: "https://pos-seven-pi.vercel.app/",
+    origin: [
+      "https://pos-seven-pi.vercel.app",
+      "http://localhost:5000",
+      "http://10.204.17.14:5173",
+    ],
     credentials: true,
   }),
 );

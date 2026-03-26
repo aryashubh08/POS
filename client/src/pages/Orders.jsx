@@ -24,40 +24,42 @@ const Orders = () => {
     }
   };
 
-  // Fetch orders on mount
   useEffect(() => {
     getOrders();
   }, []);
 
-  // Filter orders whenever 'orders' or 'active' changes
   useEffect(() => {
     if (active === "All") {
       setFilteredOrders(orders);
     } else {
       setFilteredOrders(
         orders.filter(
-          (order) => order.orderStatus.toLowerCase() === active.toLowerCase(), // match status
+          (order) => order.orderStatus.toLowerCase() === active.toLowerCase(),
         ),
       );
     }
   }, [orders, active]);
 
   return (
-    <section className="bg-slate-50 min-h-[calc(100vh-8rem)] overflow-hidden mb-8 p-6">
-      <div className="flex justify-between items-center">
-        <div className="flex items-center gap-4">
+    <section className="bg-slate-50 min-h-[calc(100vh-8rem)] overflow-hidden mb-8 px-4 sm:px-6 py-4">
+      {/* HEADER */}
+      <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-3">
+        {/* Left */}
+        <div className="flex items-center gap-3">
           <BackButton />
-          <h1 className="text-xl text-slate-700 font-semibold">Orders</h1>
+          <h1 className="text-lg sm:text-xl text-slate-700 font-semibold">
+            Orders
+          </h1>
         </div>
 
-        {/* Tabs */}
-        <div className="flex items-center gap-2 bg-white p-1 shadow-sm rounded-full">
+        {/* Tabs (scrollable on mobile) */}
+        <div className="flex items-center justify-between gap-2 bg-white p-1 shadow-sm rounded-full overflow-x-auto no-scrollbar">
           {tabs.map((tab) => (
             <button
               key={tab}
               onClick={() => setActive(tab)}
               className={`
-                px-4 py-1.5 rounded-full text-sm font-medium transition
+                whitespace-nowrap px-3 sm:px-4 py-1.5 rounded-full text-xs sm:text-sm font-medium transition
                 ${
                   active === tab
                     ? "bg-[#cb131e] text-white shadow"
@@ -71,7 +73,8 @@ const Orders = () => {
         </div>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 place-items-start mt-4">
+      {/* ORDERS GRID */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 mt-4">
         {filteredOrders.length > 0 ? (
           filteredOrders.map((order, index) => (
             <OrderCard key={index} order={order} />
