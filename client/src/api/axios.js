@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "https://pos-jbid.vercel.app",
+  baseURL: "https://pos-server-phi.vercel.app",
   withCredentials: true,
 });
 
