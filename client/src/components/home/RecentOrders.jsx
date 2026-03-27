@@ -12,7 +12,7 @@ const RecentOrders = () => {
     try {
       setLoading(true);
       const { data } = await axios.get(
-        "https://pos-jbid.vercel.app/api/v1/order/",
+        "https://pos-server-phi.vercel.app/api/v1/order/",
       );
 
       if (data.success) {

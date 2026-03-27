@@ -12,7 +12,7 @@ const RecentOrders = () => {
   const getOrders = async () => {
     try {
       const { data } = await axios.get(
-        "https://pos-jbid.vercel.app/api/v1/order/",
+        "https://pos-server-phi.vercel.app/api/v1/order/",
       );
 
       if (data.success) {
@@ -30,7 +30,7 @@ const RecentOrders = () => {
   // 🔹 Update Order Status
   const handleStatusChange = async (id, newStatus) => {
     try {
-      await axios.put(`https://pos-jbid.vercel.app/api/v1/order/${id}`, {
+      await axios.put(`https://pos-server-phi.vercel.app/api/v1/order/${id}`, {
         orderStatus: newStatus,
       });
 
